@@ -6,7 +6,7 @@ The `D` class is a utility class for working with dates in JavaScript. It provid
 ## Installation
 
 ```bash
-npm install @andrewphm/date-lib
+npm install @gramsay7/date-lib
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ npm install @andrewphm/date-lib
 First, import the `D` class from the package:
 
 ```javascript
-import D from '@andrewphm/date-lib';
+import D from '@gramsay7/date-lib';
 
 ```
 
