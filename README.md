@@ -14,7 +14,8 @@ npm install @andrewphm/date-lib
 First, import the `D` class from the package:
 
 ```javascript
-const D = require('@andrewphm/date-lib').D;
+import D from '@andrewphm/date-lib';
+
 ```
 
 Then, you can create a new `D` object:
