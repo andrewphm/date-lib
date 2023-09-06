@@ -183,4 +183,4 @@ class D {
   }
 }
 
-export { D };
+export default D;

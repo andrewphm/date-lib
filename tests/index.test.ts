@@ -1,77 +1,87 @@
-import { D } from '../src/index';
+import D from '../src/index';
 
-describe('D', () => {
-  let d;
+describe('D class', () => {
+  let d: D;
 
   beforeEach(() => {
-    d = new D(2017, 8, 2, 3, 4, 5); // September 2, 2017 03:04:05
+    // Initialize a new D object before each test
+    d = new D('2022-01-01T00:00:00');
   });
 
-  it('should return the correct year', () => {
-    expect(d.year).toBe(2017);
+  test('constructor with no arguments', () => {
+    const d = new D();
+    expect(d.year).toBe(new Date().getFullYear());
   });
 
-  it('should return the correct year in short format', () => {
-    expect(d.yr).toBe(17);
+  test('construtor with string argument', () => {
+    const d = new D('2022-01-01T00:00:00');
+    expect(d.year).toBe(2022);
   });
 
-  it('should return the correct month in long format', () => {
-    expect(d.month).toBe('September');
+  test('year getter', () => {
+    expect(d.year).toBe(2022);
   });
 
-  it('should return the correct month in short format', () => {
-    expect(d.mon).toBe('Sep');
+  test('yr getter', () => {
+    expect(d.yr).toBe(22);
   });
 
-  it('should return the correct day of the week in long format', () => {
+  test('month getter', () => {
+    expect(d.month).toBe('January');
+  });
+
+  test('mon getter', () => {
+    expect(d.mon).toBe('Jan');
+  });
+
+  test('day getter', () => {
     expect(d.day).toBe('Saturday');
   });
 
-  it('should return the correct day of the week in short format', () => {
+  test('dy getter', () => {
     expect(d.dy).toBe('Sat');
   });
 
-  it('should return the correct date', () => {
-    expect(d.date).toBe(2);
+  test('date getter', () => {
+    expect(d.date).toBe(1);
   });
 
-  it('should return the correct hours', () => {
-    expect(d.hours).toBe(3);
+  test('hours getter', () => {
+    expect(d.hours).toBe(0);
   });
 
-  it('should return the correct minutes', () => {
-    expect(d.mins).toBe(4);
+  test('mins getter', () => {
+    expect(d.mins).toBe(0);
   });
 
-  it('should return the correct seconds', () => {
-    expect(d.secs).toBe(5);
+  test('secs getter', () => {
+    expect(d.secs).toBe(0);
   });
 
-  it('should return the correct ordinal', () => {
-    expect(d.ordinal).toBe('2nd');
+  test('ordinal getter', () => {
+    expect(d.ordinal).toBe('1st');
   });
 
-  it('should format the date correctly', () => {
-    const d = new D(2017, 8, 2, 3, 4, 5);
-    expect(d.format()).toBe('2017 September 02');
+  test('format method', () => {
+    expect(d.format('Y-M-D')).toBe('2022-January-01');
+    expect(d.format('y-m-d')).toBe('22-Jan-1');
+    expect(d.format('H:I:S')).toBe('00:00:00');
+    expect(d.format('h:i:s')).toBe('0:0:0');
+    expect(d.format('#')).toBe('1st');
   });
 
-  it('should return the correct year', () => {
-    const d = new D(2017, 8, 2, 3, 4, 5);
-    expect(d.year).toBe(2017);
+  test('when method', () => {
+    const today = new Date();
+    today.setDate(today.getDate() - 1);
+    const yesterday = new D(today);
+
+    expect(yesterday.when()).toBe('1 day ago');
   });
 
-  it('should return a human-readable description of when the date will occur', () => {
-    const d = new D();
+  test('when returns today when date is today', () => {
+    const today = new Date();
+    const d = new D(today);
+
     expect(d.when()).toBe('today');
   });
-
-  it('should return a human-readable description of when a past date occurred', () => {
-    const d = new D(2017, 8, 2, 3, 4, 5);
-    // This test assumes the current date is after September 2, 2017.
-    // You might need to adjust it depending on the current date.
-    expect(d.when()).toMatch(/years ago$/);
-  });
-
-  // ... (more tests for other methods)
 });
