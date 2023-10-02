@@ -1,11 +1,12 @@
 {
   "name": "@gramsay7/date-lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' src/index.ts"
+    "start": "nodemon --watch 'src/**/*' -e ts,tsx --exec 'ts-node' src/index.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
